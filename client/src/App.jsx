@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 
 import CartList from "./componentes/CartList.jsx";
 import CheckOut from "./componentes/CheckOut.jsx";
@@ -30,7 +30,7 @@ function App() {
 
     <CartProvider>
       <ProductsProvider>
-        <BrowserRouter>
+        <HashRouter>
 
           <Navbar />
 
@@ -49,7 +49,7 @@ function App() {
           </Routes>
           <Footer />
           <WhatsAppButton />
-        </BrowserRouter>
+        </HashRouter>
       </ProductsProvider>
     </CartProvider>
   );
