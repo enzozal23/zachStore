@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
 import { useProducts } from '../contexts/Products'; // Asegúrate de que la ruta sea correcta
 
+import SkeletonSingle from './SkeletonSingle';
+
 function ItemDetailContainer() {
   const { products } = useProducts(); // Obtener productos del contexto
   const [item, setItem] = useState(null);
@@ -25,7 +27,7 @@ function ItemDetailContainer() {
   }, [id, products]); // Se ejecuta cada vez que cambia el id o los productos
 
   if (loading) {
-    return <div>Cargando producto...</div>; // Muestra un mensaje de carga si aún estamos obteniendo el producto
+    return <> Cargando... <SkeletonSingle /></>; // Muestra un mensaje de carga si aún estamos obteniendo el producto
   }
 
   if (!item) {

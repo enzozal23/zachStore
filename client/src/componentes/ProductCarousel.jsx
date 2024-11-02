@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
-import { getProductsRequest } from '../api/products'; // Ajusta esta importación a tu estructura
+import { useProducts } from '../contexts/Products'; // Asegúrate de importar correctamente el contexto
 import ItemListContainer from './ItemListContainer';
-
-const PrevArrow = ({ onClick }) => (//svg botones
+import Loader from './Loader'
+const PrevArrow = ({ onClick }) => ( //svg botones
   <div className="absolute left-0 z-10 flex items-center justify-center h-full w-10 cursor-pointer top-1/2 transform -translate-y-1/2" onClick={onClick}>
     <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-transparent border border-black">
       <svg
@@ -47,22 +47,8 @@ const NextArrow = ({ onClick }) => (  //svg botones
 );
 
 const ProductCarousel = () => {
-  const [productos, setProductos] = useState([]);
+  const { products } = useProducts(); // Obtiene los productos del contexto
   const [currentSlide, setCurrentSlide] = useState(0); // Estado para controlar la diapositiva actual
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const res = await getProductsRequest();
-        const todosLosProductos = res.data;
-        setProductos(todosLosProductos);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
-    };
-
-    fetchProducts();
-  }, []);
 
   // Configuración del carrusel
   const settings = {
@@ -95,10 +81,10 @@ const ProductCarousel = () => {
 
   return (
     <>
-      <div className="relative p-5 m-5 sm:m-48 bg-slate-50 shadow-lg max-w-full">
+      {products.length === 0 ? <Loader /> : <div className="relative p-5 m-5 sm:m-48 bg-slate-50 shadow-lg max-w-full">
         <h2 className="text-2xl font-bold mb-4">Nuestros Productos</h2>
         <Slider {...settings}>
-          {productos.map((producto) => (
+          {products.map((producto) => (
             <div key={producto._id} className="flex justify-center">
               <div className="group relative max-w-xs m-5 shadow-sm pb-10 transition-shadow duration-300 hover:shadow-xl">
                 <Link to={`/item/${producto._id}`}>
@@ -134,7 +120,7 @@ const ProductCarousel = () => {
         {/* Línea negra como indicador */}
         <div className="flex justify-center mt-4">
           <div className="flex space-x-2 max-w-xs mx-auto">
-            {productos.map((_, index) => (
+            {products.map((_, index) => (
               <div
                 key={index}
                 className={`w-10 h-0.5 ${currentSlide === index ? 'bg-red-500' : 'bg-gray-300'} transition-colors duration-300`}
@@ -142,7 +128,8 @@ const ProductCarousel = () => {
             ))}
           </div>
         </div>
-      </div>
+      </div>}
+
 
       <ItemListContainer />
     </>

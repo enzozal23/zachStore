@@ -13,6 +13,8 @@ import Footer from "./componentes/Footer.jsx";
 import ContactForm from "./componentes/ContactForm.jsx";
 import AboutUs from "./componentes/AboutUs.jsx";
 import WhatsAppButton from "./componentes/WhatsAppButton.jsx";
+import NotFound from "./componentes/NotFound.jsx";
+
 
 
 
@@ -46,6 +48,7 @@ function App() {
             <Route path="/productos/:categoria" element={<ItemListContainer />}></Route>
             <Route path="/CartList" element={<CartList />} />
             <Route path="/finalizarCompra" element={<CheckOut />}></Route>
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
           <WhatsAppButton />

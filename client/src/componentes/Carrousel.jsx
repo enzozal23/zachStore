@@ -35,8 +35,8 @@ const Carrousel = () => {
 
   return (
     <div className="relative w-full">
-      <h5 className="flex justify-center text-4xl font-bold tracking-wide text-gray-800 font-sans">
-        Más productos
+      <h5 className="flex justify-center text-2xl font-bold pt-2 tracking-wide text-gray-800 font-sans">
+        Productos Relacionados
       </h5>
 
       <div className="relative h-56 overflow-hidden rounded-lg md:h-96">

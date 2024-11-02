@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 function Cards({ producto }) {
   const isDisabled = producto.quantity === 0; // Verificar si el producto no tiene stock
 

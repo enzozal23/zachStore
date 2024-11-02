@@ -18,7 +18,7 @@ function Navbar() {
         <div className="container mx-auto flex items-center justify-between ">
           <button
             onClick={toggleSidebar}
-            className="text-white bg-gray-700 px-4 py-2 rounded-md hover:bg-gray-600 focus:outline-none"
+            className="text-white bg-gray-700 px-4 py-2 rounded-md hover:bg-gray-600 focus:outline-none ml-2"
             aria-label="Abrir menú"
           >
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
@@ -37,9 +37,9 @@ function Navbar() {
         className={`fixed inset-0 bg-gray-800 bg-opacity-75 transition-opacity duration-300 ${isSidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         style={{ zIndex: 999 }}
       >
-        <div className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg transition-transform duration-300 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} z-50 flex flex-col`}>
+        <div className={`fixed top-0 left-0 h-full w-64 bg-blue-50 shadow-lg transition-transform duration-300 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} z-50 flex flex-col`}>
           <div className="flex justify-between items-center p-4 border-b">
-            <h2 className="text-lg font-semibold">Opciones</h2>
+            <h2 className="text-lg font-semibold">Categorias</h2>
             <button onClick={toggleSidebar} className="text-gray-700 focus:outline-none">
               &times;
             </button>
@@ -63,6 +63,18 @@ function Navbar() {
             </Link>
             <Link to="productos/aminoacidos" onClick={toggleSidebar} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
               Aminoácidos
+            </Link>
+            <Link to="productos/geles" onClick={toggleSidebar} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+              Geles
+            </Link>
+            <Link to="productos/quemadores" onClick={toggleSidebar} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+              Quemadores
+            </Link>
+            <Link to="productos/ganadores" onClick={toggleSidebar} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+              Ganadores
+            </Link>
+            <Link to="productos/shaker" onClick={toggleSidebar} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+              Shaker
             </Link>
           </div>
 

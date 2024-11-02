@@ -3,16 +3,17 @@ import { useForm } from 'react-hook-form';
 import { sendMailRequest } from '../api/products';
 import ReCAPTCHA from 'react-google-recaptcha';
 
+
 const ContactForm = () => {
     const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm();
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [isHuman, setIsHuman] = useState(false);  // Nuevo estado para controlar reCAPTCHA
-    
+
     // Manejador del envío del formulario
     const onSubmit = async (data) => {
 
-        
+
         if (!isHuman) {
             setErrorMessage('Por favor, completa el reCAPTCHA.');
             return;
@@ -26,6 +27,8 @@ const ContactForm = () => {
             await sendMailRequest(data);
             setSuccessMessage('¡Tu mensaje ha sido enviado con éxito!');
             reset();  // Limpia el formulario después de enviar
+            window.location.reload();
+
         } catch (error) {
             console.error('Error enviando el mensaje:', error);
             setErrorMessage('Hubo un error al enviar el mensaje. Inténtalo nuevamente.');

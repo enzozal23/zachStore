@@ -45,6 +45,7 @@ function ItemCount({ item }) {
     }, [carrito]);
 
     return (
+
         <div className="flex flex-col items-center mt-4"> {/* Contenedor centrado y espaciado */}
             <div className="flex items-center space-x-4"> {/* Espaciado entre botones y cantidad */}
                 <button className="btn border rounded-full text-lg bg-gray-200 hover:bg-gray-300 transition p-2" onClick={handleSumar}>+</button>
