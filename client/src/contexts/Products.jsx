@@ -22,7 +22,7 @@ export function ProductsProvider({ children }) {
                 // Aumentamos el precio de cada producto un 8%
                 const updatedProducts = res.data.map(product => ({
                     ...product,
-                    price: (product.price * 1.0439).toFixed(0) // Ajustamos el precio y redondeamos a 2 decimales
+                    price: (product.price * 1.0).toFixed(0) // Ajustamos el precio y redondeamos a 2 decimales
                 }));
 
                 setProducts(updatedProducts); // Actualizamos el estado con los productos modificados
